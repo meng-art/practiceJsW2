@@ -34,5 +34,38 @@
 
 ​	const定义的值不能重新修改，也不能重新声明，但是如果const声明的是一个对象，那么是可以修改对象内部的属性的。
 
+### 七、变量提升及函数提升
 
+1. var变量提升：
 
+   ```javascript
+   //1.var变量提升声明，但不能赋值给变量
+   console.log(num + '件');
+   var num = 10;  //undefined件
+   ```
+
+   ​       var变量只能提升声明，但**不能赋值给变量**。
+
+2. 函数提升：
+
+   ​        调用函数时，即使函数定义在后面也不影响使用，因此函数具有提升的性质。
+
+   ```javascript
+   fnc()
+   function fnc(){
+       console.log("Hello");
+   }
+   // Hello
+   ```
+
+   ​         但是**对于函数表达式没有提升的性质**，因为函数表达式是赋值给一个变量，见下例：
+
+   ```javascript
+   ex()
+   let ex = function (){
+       console.log("Hello");
+   }
+   // Uncaught ReferenceError: Cannot access 'ex' before initialization
+   ```
+
+   
