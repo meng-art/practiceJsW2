@@ -323,6 +323,17 @@ result() //函数调用了3次
 
 Promise 的实例方法有 then/catch/finally 三种，静态方法有 all/race/allSettled/any/resolve/reject 六种。实例方法只有在promise实例化后才能使用。
 
+#### 四、react
+
+##### 1.Hooks用过吗？聊聊React中class组件和函数组件的区别？
+
+1. class组件有状态,函数组件中不能拥有自己的状态(state)。在hooks之前函数组件是无状态的，都是通过props来获取父组件的状态，但是hooks提供了useState来维护函数组件内部的状态。
+2. class组件有生命周期，并且较为复杂，函数组件没有生命周期。
+
+##### 2.介绍一下React 生命周期
+
+生命周期分为四个阶段：`挂载阶段`，`更新阶段`，`卸载阶段`，`错误处理`。
+
 
 
 ### 看程序说结果
