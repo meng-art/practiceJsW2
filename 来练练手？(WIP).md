@@ -323,7 +323,92 @@ result() //函数调用了3次
 
 Promise 的实例方法有 then/catch/finally 三种，静态方法有 all/race/allSettled/any/resolve/reject 六种。实例方法只有在promise实例化后才能使用。
 
+#### 四、react
 
+##### 1.Hooks用过吗？聊聊React中class组件和函数组件的区别？
+
+1. class组件有状态,函数组件中不能拥有自己的状态(state)。在hooks之前函数组件是无状态的，都是通过props来获取父组件的状态，但是hooks提供了useState来维护函数组件内部的状态。
+2. class组件有生命周期，并且较为复杂，函数组件没有生命周期。
+
+##### 2.介绍一下React 生命周期
+
+生命周期分为四个阶段：挂载阶段，更新阶段，卸载阶段，错误处理。
+
+![生命周期](生命周期.webp)
+
+1.挂载阶段
+
+- constructor，构造函数，初始化state和props，绑定this。
+- getDerivedStateFromProps，从props中获取state，在render之前调用。
+- render，渲染函数，返回jsx。
+- componentDidMount，组件挂载完成，可以在这里进行DOM操作。
+
+2.更新阶段
+
+- shouldComponentUpdate,返回true或者false，返回true表示组件需要更新，返回false表示组件不需要更新，不需要更新的话，后面的生命周期函数就不会执行了。
+- getSnapshotBeforeUpdate,在render之后，DOM更新之前调用，可以在这里获取DOM更新之前的DOM状态。
+
+3.卸载阶段：componentWillUnmount，组件卸载之前调用。
+
+4.错误处理：错误处理分为两个阶段，componentDidCatch和getDerivedStateFromError。
+
+##### 3.介绍一下`React`中的`state`和`props`
+
+`state`是组件对内的接口，`props`是组件对外的接口。
+
+1. `state`
+
+- `state`是组件内部的状态，只能在组件内部使用
+- `state`是可变的，可以通过`setState`来改变`state`
+- `state`是私有的，不能被其他组件访问
+
+2. `props`
+
+- `props`是组件的属性，可以在组件内部使用
+- `props`是只读的，不能通过`props`来改变组件的属性，接收新的`props`，旧的`props`就会被抛弃
+- `props`是可以被其他组件访问的
+
+##### 4. 有常用的`React Hooks`吗？介绍一下
+
+1.useState
+
+- `useState`接收一个参数，这个参数是`state`的初始值
+- `useState`返回一个数组，数组的第一个元素是`state`的值，第二个元素是一个函数，用来改变`state`的值
+
+2.useEffect
+
+- 接收一个函数，这个函数会在`组件挂载完成后`，`组件更新完成后`，`组件卸载前`执行.
+- `useEffect`还可以接收第二个参数
+  1. 不传值
+     `useEffect()`的函数会在`组件挂载完成后执行`，`组件更新完成后执行`，`组件卸载前执`
+  2. 传入一个空数组
+     `useEffect()`的函数会在`组件挂载完成后执行`，`组件卸载前执行`.
+  3. 传一个数组，数组的元素是`state`
+     当`state`发生改变时，`useEffect()`的函数会在`组件挂载完成后执行`，`组件更新完成后执行`，`组件卸载前执行`.
+
+##### 5.使用`Hooks`有什么限制条件吗？
+
+仅在函数组件和自定义`hooks`函数中调用`hooks`函数。
+
+##### 6. `useEffect()`的作用
+
+- 接收一个函数，这个函数会在`组件挂载完成后`，`组件更新完成后`，`组件卸载前`执行.
+- `useEffect`还可以接收第二个参数
+  1. 不传值
+     `useEffect()`的函数会在`组件挂载完成后执行`，`组件更新完成后执行`，`组件卸载前执`
+  2. 传入一个空数组
+     `useEffect()`的函数会在`组件挂载完成后执行`，`组件卸载前执行`.
+  3. 传一个数组，数组的元素是`state`
+     当`state`发生改变时，`useEffect()`的函数会在`组件挂载完成后执行`，`组件更新完成后执行`，`组件卸载前执行`.
+
+##### 7. 介绍一下`虚拟dom`？
+
+虚拟dom用来描述真实dom的对象，`react`通过`虚拟dom`和`diff算法`来实现页面的渲染，diff算法的原理是通过`新旧虚拟dom`的对比，找出需要更新的`dom`，然后更新`dom`，这样就可以实现页面的局部更新，提高页面的渲染性能。
+
+##### 8. `useMemo()`和`useCallback()`有什么区别？
+
+1. `useMemo()`用来缓存函数的返回值,`useCallback()`用来缓存函数。
+2. `useMemo()`返回一个值，对应函数的返回值。`useCallback()`返回一个函数。
 
 ### 看程序说结果
 
